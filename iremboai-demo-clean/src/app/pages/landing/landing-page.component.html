@@ -1,0 +1,96 @@
+<div class="page" [class.dimmed]="chatOpen()">
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#" aria-label="IremboGov">
+        <span class="logo-text">irembo</span><span class="logo-text-light">Gov</span>
+      </a>
+      <nav class="topbar-actions">
+        <button class="topbar-btn topbar-search" type="button">
+          <span class="icon">🔍</span> Find application
+        </button>
+        <button class="topbar-btn topbar-signup" type="button">
+          <span class="icon">📝</span> Sign Up
+        </button>
+        <button class="topbar-btn topbar-login" type="button">
+          <span class="icon">👤</span> Login
+        </button>
+        <button class="topbar-btn topbar-lang" type="button">
+          English <span class="caret">▾</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1 class="hero-title">Welcome</h1>
+    <div class="search-bar">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input type="text" placeholder="Search for a service" />
+    </div>
+  </section>
+
+  <!-- Main content panel: services -->
+  <main class="main">
+    <h2 class="section-title">Immigration And Emigration</h2>
+    <div class="service-grid">
+      <ul class="service-col">
+        <li>Penalty Payments</li>
+        <li>DPA payment</li>
+        <li>CEPGL Services</li>
+        <li>Rwandan Nationality</li>
+        <li>Permit and Visa Transfer</li>
+      </ul>
+      <ul class="service-col">
+        <li>Permits</li>
+        <li>Foreigner ID Card</li>
+        <li>Foreigner Travel Document</li>
+        <li>e-Passport Application</li>
+        <li>Laissez-passer</li>
+        <li>Visa Application</li>
+      </ul>
+      <ul class="service-col service-col--highlight">
+        <li class="active">Rwandan Nationality by Acquisition <span class="dot"></span></li>
+        <li>Rwandan Nationality by Origin <span class="dot"></span></li>
+        <li>Renunciation of Rwandan nationality <span class="dot"></span></li>
+        <li>Recovery of Rwandan nationality <span class="dot"></span></li>
+        <li>Payment of Granted Nationality <span class="dot"></span></li>
+      </ul>
+    </div>
+
+    <!-- Demo callout pointing to the floating button -->
+    <aside class="callout">
+      <span class="callout-eyebrow">DEMO</span>
+      <h3 class="callout-title">Try the IremboAI driving-test slot booking flow</h3>
+      <p class="callout-body">
+        Click <strong>Ask IremboAI</strong> in the bottom-left corner. The chat opens with
+        <em>"I want to view available driving test slots."</em> already prepared — send it to start the conversation.
+      </p>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="footer-copy">© copyright irembo 2023 All rights reserved</span>
+    <div class="footer-center">
+      <span class="footer-phone">📞 9090</span>
+      <span class="footer-follow">Follow us on</span>
+      <span class="footer-icon">🐦</span>
+      <span class="footer-icon">📘</span>
+      <span class="footer-icon">in</span>
+      <span class="footer-icon">M</span>
+    </div>
+    <span class="footer-links">Terms of Use • Get Help</span>
+  </footer>
+</div>
+
+<!-- Floating "Ask IremboAI" button -->
+<app-ask-button (clicked)="openChat()" [hidden]="chatOpen()" />
+
+<!-- Chatbot modal: opens with the slot-viewing prompt pre-seeded in the input -->
+<app-chatbot-modal
+  [open]="chatOpen()"
+  [initialPrompt]="'I want to view available driving test slots.'"
+  (closed)="closeChat()"
+/>
